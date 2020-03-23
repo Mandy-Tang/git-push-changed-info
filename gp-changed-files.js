@@ -1,7 +1,5 @@
 const cmd = require('node-cmd');
 
-getChangedFilesFromLastPush();
-
 async function getChangedFilesFromLastPush() {
   const gitCherryInfo  = await gitCherry();
 
@@ -14,7 +12,7 @@ async function getChangedFilesFromLastPush() {
   const changedFiles = await getChangedFilesFromCommits(commits);
   console.log('you have changed those files:\n');
   console.log(changedFiles);
-  return changedFiles;
+  return changedFiles.toString().split('\n').filter(path => path !== '');
 }
 
 function gitCherry () {
@@ -65,4 +63,8 @@ async function getChangedFilesFromCommits(commits) {
   const from = commits[0];
   const to = commits[commits.length - 1];
   return await gitDiff(from, to);
+}
+
+module.exports = {
+  getChangedFilesFromLastPush
 }
