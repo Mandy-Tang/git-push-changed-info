@@ -11,21 +11,37 @@ async function getChangedProjects() {
       prev.push(cur);
     }
     return prev;
-  }, [])
-
+  }, []);
   return changedProjects;
 }
 
-function matchProject(projectRoot, changedFiles) {
-  return changedFiles.find(filePath => filePath.startsWith(projectRoot))
+function matchProject(project, changedFiles) {
+  return changedFiles.find(filePath => filePath.startsWith(project.root))
 }
 
 async function getAngularProjects() {
   const angularConfigData = fs.readFileSync('./angular.json');
   const angularConfig = JSON.parse(angularConfigData);
-  return getAllProjectPaths(angularConfig);
+  const projects = angularConfig.projects;
+  return filterProjectInfo(projects);
 }
 
-function getAllProjectPaths(config) {
-  return Object.values(config.projects).map(projectConfig => projectConfig.root);
+function filterProjectInfo(projects) {
+  const results = [];
+  for (const prop in projects) {
+    if (projects.hasOwnProperty(prop)) {
+      const project = projects[prop];
+      results.push(
+        {
+          project: prop,
+          root: project.root
+        }
+      )
+    }
+  }
+  return results;
+}
+
+module.exports = {
+  getChangedProjects
 }
