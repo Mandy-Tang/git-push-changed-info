@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const { getChangedProjects } = require('./gp-changed-ng-projects');
+const { getChangedProjects } = require('./get-changed-ng-projects');
 const shell = require('shelljs');
 
 main();

@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { getChangedFilesFromLastPush } = require('./gp-changed-files');
+const { getChangedFilesFromLastPush } = require('./get-changed-files');
 
 
 async function getChangedProjects() {
@@ -12,6 +12,11 @@ async function getChangedProjects() {
     }
     return prev;
   }, []);
+
+  console.log('you have changed these projects:');
+  changedProjects.forEach(project => {
+    console.log(project.project);
+  })
   return changedProjects;
 }
 
