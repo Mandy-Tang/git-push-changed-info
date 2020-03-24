@@ -11,7 +11,7 @@ async function main() {
   });
   const hasFailure = result.find(result => result.code !== 0);
   if (hasFailure) {
-    shell.exec(1);
+    shell.exit(1);
   }
-  shell.exec(0);
+  shell.exit(0);
 }
