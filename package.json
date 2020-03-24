@@ -2,14 +2,18 @@
   "name": "git-push-changed-info",
   "version": "1.0.0",
   "description": "",
-  "main": "gp-changed-files.js",
+  "main": "gpcf",
+  "bin": {
+    "gpcf": "gpcf.js"
+  },
   "scripts": {
-    "start": "node gp-changed-files.js",
+    "start": "node gpcf.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mandy Tang",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "node-cmd": "^3.0.0"
+    "node-cmd": "^3.0.0",
+    "shelljs": "^0.8.3"
   }
 }
