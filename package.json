@@ -12,6 +12,9 @@
   },
   "author": "Mandy Tang",
   "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "dependencies": {
     "chalk": "^3.0.0",
     "shelljs": "^0.8.3"
