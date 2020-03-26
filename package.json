@@ -15,11 +15,24 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test"
+    }
+  },
+  "lint-staged": {
+    "*.{json, js, ts, html}": [
+      "prettier --write"
+    ]
+  },
   "dependencies": {
     "chalk": "^3.0.0",
     "shelljs": "^0.8.3"
   },
   "devDependencies": {
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.9",
     "prettier": "^2.0.2"
   }
 }

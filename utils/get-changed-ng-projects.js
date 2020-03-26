@@ -3,7 +3,6 @@ const shell = require('shelljs');
 const chalk = require('chalk');
 const { getChangedFilesFromLastPush } = require('./get-changed-files');
 
-
 async function getChangedProjects() {
   const angularProjects = await getAngularProjects();
   const changedFiles = await getChangedFilesFromLastPush();
@@ -18,12 +17,12 @@ async function getChangedProjects() {
   shell.echo(chalk.bgCyanBright('you have changed these projects:'));
   changedProjects.forEach(project => {
     shell.echo(chalk.blueBright(project.project));
-  })
+  });
   return changedProjects;
 }
 
 function matchProject(project, changedFiles) {
-  return changedFiles.find(filePath => filePath.startsWith(project.root))
+  return changedFiles.find(filePath => filePath.startsWith(project.root));
 }
 
 async function getAngularProjects() {
@@ -38,12 +37,10 @@ function filterProjectInfo(projects) {
   for (const prop in projects) {
     if (projects.hasOwnProperty(prop)) {
       const project = projects[prop];
-      results.push(
-        {
-          project: prop,
-          root: project.root
-        }
-      )
+      results.push({
+        project: prop,
+        root: project.root
+      });
     }
   }
   return results;
@@ -51,4 +48,4 @@ function filterProjectInfo(projects) {
 
 module.exports = {
   getChangedProjects
-}
+};
