@@ -1,4 +1,6 @@
 const shell = require('shelljs');
+const chalk = require('chalk');
+
 
 async function getChangedFilesFromLastPush() {
   const gitCherryInfo  = await gitCherry();
@@ -10,8 +12,8 @@ async function getChangedFilesFromLastPush() {
   }
 
   const changedFiles = await getChangedFilesFromCommits(commits);
-  shell.echo('you have changed those files:');
-  changedFiles.forEach(filePath => shell.echo(filePath));
+  shell.echo(chalk.bgCyanBright('you have changed those files:'));
+  changedFiles.forEach(filePath => shell.echo(chalk.blueBright(filePath)));
   return changedFiles;
 }
 

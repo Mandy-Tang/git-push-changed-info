@@ -13,6 +13,7 @@
   "author": "Mandy Tang",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^3.0.0",
     "shelljs": "^0.8.3"
   }
 }

@@ -1,6 +1,7 @@
 const fs = require('fs');
-const { getChangedFilesFromLastPush } = require('./get-changed-files');
 const shell = require('shelljs');
+const chalk = require('chalk');
+const { getChangedFilesFromLastPush } = require('./get-changed-files');
 
 
 async function getChangedProjects() {
@@ -14,9 +15,9 @@ async function getChangedProjects() {
     return prev;
   }, []);
 
-  shell.echo('you have changed these projects:');
+  shell.echo(chalk.bgCyanBright('you have changed these projects:'));
   changedProjects.forEach(project => {
-    shell.echo(project.project);
+    shell.echo(chalk.blueBright(project.project));
   })
   return changedProjects;
 }
