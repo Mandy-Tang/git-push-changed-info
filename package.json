@@ -4,7 +4,7 @@
   "description": "This is a tool to check local changed files or angular projects since the last push",
   "main": "gpd",
   "bin": {
-    "gpcf": "bin/gpd.js"
+    "gpd": "bin/gpd.js"
   },
   "scripts": {
     "start": "node gpd.js",
