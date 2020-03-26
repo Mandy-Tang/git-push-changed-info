@@ -1,13 +1,13 @@
 {
-  "name": "git-push-changed-info",
-  "version": "1.0.0",
-  "description": "",
-  "main": "gpcf",
+  "name": "git-push-diff",
+  "version": "0.0.1",
+  "description": "This is a tool to check local changed files or angular projects since the last push",
+  "main": "gpd",
   "bin": {
-    "gpcf": "bin/gpcf.js"
+    "gpcf": "bin/gpd.js"
   },
   "scripts": {
-    "start": "node gpcf.js",
+    "start": "node gpd.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mandy Tang",
