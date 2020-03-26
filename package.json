@@ -4,7 +4,7 @@
   "description": "",
   "main": "gpcf",
   "bin": {
-    "gpcf": "gpcf.js"
+    "gpcf": "bin/gpcf.js"
   },
   "scripts": {
     "start": "node gpcf.js",
