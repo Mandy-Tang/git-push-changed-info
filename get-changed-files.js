@@ -1,4 +1,4 @@
-const cmd = require('node-cmd');
+const shell = require('shelljs');
 
 async function getChangedFilesFromLastPush() {
   const gitCherryInfo  = await gitCherry();
@@ -10,29 +10,29 @@ async function getChangedFilesFromLastPush() {
   }
 
   const changedFiles = await getChangedFilesFromCommits(commits);
-  console.log('you have changed those files:\n');
-  console.log(changedFiles);
-  return changedFiles.toString().split('\n').filter(path => path !== '');
+  shell.echo('you have changed those files:');
+  changedFiles.forEach(filePath => shell.echo(filePath));
+  return changedFiles;
 }
 
 function gitCherry () {
   return new Promise((resolve, reject) => {
-    cmd.get('git cherry -v', (err, data, stderr) => {
-      if (err) {
+    shell.exec('git cherry -v', {silent: true}, (code, stdout, stderr) => {
+      if (code !== 0) {
         return reject(err)
       }
-      resolve(data);
+      resolve(stdout);
     })
   })
 }
 
 function gitDiff (from, to) {
   return new Promise((resolve, reject) => {
-    cmd.get(`git diff ${from}~1 ${to} --name-only`, (err, data, stderr) => {
-      if (err) {
+    shell.exec(`git diff ${from}~1 ${to} --name-only`, {silent: true}, (code, stdout, stderr) => {
+      if (code !== 0) {
         return reject(err)
       }
-      resolve(data);
+      resolve(stdout);
     })
   })
 }
@@ -62,7 +62,8 @@ function findSha(commitInfo) {
 async function getChangedFilesFromCommits(commits) {
   const from = commits[0];
   const to = commits[commits.length - 1];
-  return await gitDiff(from, to);
+  const changedFilesInfo = await gitDiff(from, to);
+  return changedFilesInfo.toString().split('\n').filter(path => path !== '');
 }
 
 module.exports = {
