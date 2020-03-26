@@ -4,10 +4,10 @@
   "description": "This is a tool to check local changed files or angular projects since the last push",
   "main": "gpd",
   "bin": {
-    "gpd": "bin/gpd.js"
+    "gp-diff": "bin/gp-diff.js"
   },
   "scripts": {
-    "start": "node gpd.js",
+    "start": "node bin/gp-diff.js",
     "test": "echo \"Alert: no test specified\" && exit 0"
   },
   "author": "Mandy Tang",
