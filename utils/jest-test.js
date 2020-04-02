@@ -1,6 +1,6 @@
-const {getScopeArg, SCOPE} = require('./get-scope-arg');
-const {getChangedProjects} = require('./get-changed-ng-projects');
-const {gitCurrentBranch, gitCherry} = require('./git');
+const { getScopeArg, SCOPE } = require('./get-scope-arg');
+const { getChangedProjects } = require('./get-changed-ng-projects');
+const { gitCurrentBranch, gitCherry } = require('./git');
 const shell = require('shelljs');
 
 async function runJestTest(argv) {
@@ -29,7 +29,7 @@ async function runJestForChangedProjects() {
 }
 
 async function runJestForChangedFiles() {
-  const currentBranch  = await gitCurrentBranch();
+  const currentBranch = await gitCurrentBranch();
   const cherryInfo = await gitCherry();
   const commitsLength = cherryInfo.split('\n+').length;
   const lastPushedCommit = `${currentBranch.trim()}~${commitsLength}`;
@@ -45,5 +45,5 @@ async function runJestForChangedFiles() {
 }
 
 module.exports = {
-  runJestTest
-}
+  runJestTest,
+};

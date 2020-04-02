@@ -1,4 +1,4 @@
-const {getChangedProjects} = require('./get-changed-ng-projects');
+const { getChangedProjects } = require('./get-changed-ng-projects');
 const shell = require('shelljs');
 
 async function runDefaultTest() {
@@ -15,5 +15,5 @@ async function runDefaultTest() {
 }
 
 module.exports = {
-  runDefaultTest
-}
+  runDefaultTest,
+};

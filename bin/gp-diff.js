@@ -10,7 +10,6 @@ async function main() {
   switch (tool) {
     case TOOL.JEST:
       await runJestTest(process.argv);
-
       break;
     case TOOL.DEFAULT:
     default:

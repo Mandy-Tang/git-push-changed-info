@@ -6,5 +6,5 @@ function getArg(argName, argv) {
 }
 
 module.exports = {
-  getArg
-}
+  getArg,
+};

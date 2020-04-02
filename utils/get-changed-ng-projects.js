@@ -43,7 +43,7 @@ function filterProjectInfo(projects) {
       const project = projects[prop];
       results.push({
         project: prop,
-        root: project.root
+        root: project.root,
       });
     }
   }
@@ -51,5 +51,5 @@ function filterProjectInfo(projects) {
 }
 
 module.exports = {
-  getChangedProjects
+  getChangedProjects,
 };

@@ -2,8 +2,8 @@ const { getArg } = require('./get-arg');
 
 const SCOPE = {
   PROJECT: 'PROJECT',
-  FILE: 'FILE'
-}
+  FILE: 'FILE',
+};
 
 function getScopeArg(argv) {
   const scope = getArg('scope', argv);
@@ -17,5 +17,5 @@ function getScopeArg(argv) {
 
 module.exports = {
   SCOPE,
-  getScopeArg
-}
+  getScopeArg,
+};

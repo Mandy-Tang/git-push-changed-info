@@ -1,6 +1,6 @@
 const shell = require('shelljs');
 const chalk = require('chalk');
-const {gitCherry, gitDiff} = require('./git');
+const { gitCherry, gitDiff } = require('./git');
 
 async function getChangedFilesFromLastPush() {
   const gitCherryInfo = await gitCherry();
@@ -50,5 +50,5 @@ async function getChangedFilesFromCommits(commits) {
 }
 
 module.exports = {
-  getChangedFilesFromLastPush
+  getChangedFilesFromLastPush,
 };
