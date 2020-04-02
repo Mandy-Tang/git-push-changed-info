@@ -29,11 +29,22 @@ async function runJestForChangedProjects() {
 }
 
 async function runJestForChangedFiles() {
+  const hasYarn = shell.which('yarn');
+  const hasJest = shell.which('jest');
+
+  if (!hasYarn && !hasJest) {
+    shell.echo('This script requires yarn or jest installed in global');
+    shell.exit(1);
+  }
+
+  const jestBin = hasJest ? 'jest' : 'yarn jest';
+
   const currentBranch = await gitCurrentBranch();
   const cherryInfo = await gitCherry();
   const commitsLength = cherryInfo.split('\n+').length;
   const lastPushedCommit = `${currentBranch.trim()}~${commitsLength}`;
-  const command = `jest --changedSince=${lastPushedCommit}`;
+
+  const command = `${jestBin} --changedSince=${lastPushedCommit}`;
 
   console.log(command);
   const result = shell.exec(command);
