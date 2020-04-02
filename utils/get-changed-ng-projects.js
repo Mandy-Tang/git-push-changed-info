@@ -4,8 +4,12 @@ const chalk = require('chalk');
 const { getChangedFilesFromLastPush } = require('./get-changed-files');
 
 async function getChangedProjects() {
-  const angularProjects = await getAngularProjects();
   const changedFiles = await getChangedFilesFromLastPush();
+  if (!changedFiles || changedFiles.length === 0) {
+    shell.echo('no file changed');
+    shell.exit(0);
+  }
+  const angularProjects = await getAngularProjects();
 
   const changedProjects = angularProjects.reduce((prev, cur) => {
     if (matchProject(cur, changedFiles)) {
