@@ -1,5 +1,6 @@
 const shell = require('shelljs');
 const chalk = require('chalk');
+const {gitCherry, gitDiff} = require('./git');
 
 async function getChangedFilesFromLastPush() {
   const gitCherryInfo = await gitCherry();
@@ -14,32 +15,6 @@ async function getChangedFilesFromLastPush() {
   shell.echo(chalk.bgCyanBright('you have changed those files:'));
   changedFiles.forEach(filePath => shell.echo(chalk.blueBright(filePath)));
   return changedFiles;
-}
-
-function gitCherry() {
-  return new Promise((resolve, reject) => {
-    shell.exec('git cherry -v', { silent: true }, (code, stdout, stderr) => {
-      if (code !== 0) {
-        return reject(err);
-      }
-      resolve(stdout);
-    });
-  });
-}
-
-function gitDiff(from, to) {
-  return new Promise((resolve, reject) => {
-    shell.exec(
-      `git diff ${from}~1 ${to} --name-only`,
-      { silent: true },
-      (code, stdout, stderr) => {
-        if (code !== 0) {
-          return reject(err);
-        }
-        resolve(stdout);
-      }
-    );
-  });
 }
 
 function getCommits(cherryInfo) {
