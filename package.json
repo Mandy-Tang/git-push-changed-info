@@ -1,6 +1,6 @@
 {
   "name": "git-push-diff",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This is a tool to check local changed files or angular projects since the last push",
   "main": "gpd",
   "bin": {
