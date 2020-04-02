@@ -1,3 +1,5 @@
+const { getArg } = require('./get-arg');
+
 const SCOPE = {
   PROJECT: 'PROJECT',
   FILE: 'FILE',
@@ -5,12 +7,8 @@ const SCOPE = {
 }
 
 function getScopeArg(argv) {
-  const scopeArg = argv.find(arg => arg.startsWith('--scope='));
-  if (!scopeArg) {
-    return SCOPE.PROJECT;
-  }
+  const scope = getArg('scope', argv);
 
-  const scope = scopeArg.toUpperCase().split('=')[1];
   if (!scope) {
     return SCOPE.PROJECT;
   }
